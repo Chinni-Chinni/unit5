@@ -8,6 +8,12 @@
     <link rel = "stylesheet" href="index.css">
 </head>
 <body>
+
+    <h2 style="text-align: center;"><u>Movies Data</u></h2>
+    <div>
+    <button id ="sort-lh"  value = "lowToHigh" >Sort by low rating to high</button>
+    <button id = "sort-hl"  value="highToLow"> Sort by High rating to low</button>
+</div>
     <div class = "container"></div>
     
 </body>
@@ -16,9 +22,9 @@
 <script>
 var movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-//console.log(movies);
 
-function display(){
+function display(movies){
+    document.querySelector('.container').innerHTML = '';
     movies.forEach(function(movies){
         var box = document.createElement("div");
         box.setAttribute("class","box")
@@ -44,8 +50,42 @@ function display(){
     })
 }
 
-display()
+display(movies);
 
+function lowToHigh(data){
+    var newdata = data.filter(function(movies){
+        console.log(movies.IMDbrating<=29)
+        if(movies.IMDbrating <= 29){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    return newdata;
+}
+
+
+function highToLow(data){
+    var newdata = data.filter(function(movies){
+        if(movies.IMDbrating >= 29){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    return newdata;
+}
+
+
+document.querySelector("#sort-lh").addEventListener("click",function(){
+    var data = lowToHigh(movies);
+    display(data);
+})
+
+document.querySelector("#sort-hl").addEventListener("click",function(){
+    var data = highToLow(movies);
+    display(data);
+})
 
 
 

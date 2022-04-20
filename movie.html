@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie tickets</title>
+    <link rel = "stylesheet" href="index.css">
+</head>
+<body>
+    <div><a class = "indexdata" href="index.html">movies data</a></div>
+    <div id = "container"></div>
+    
+</body>
+</html>
+
+<script>
+ var movies = [
+{
+  moviename: "Much Ado About Nothing",
+  releasedate: "12/3/2021",
+  poster: "http://dummyimage.com/105x100.png/5fa2dd/ffffff",
+  IMDbrating: 89
+}, 
+{movienae:"Japanese Story",
+releasedate: "10/11/2021",
+  poster: "http://dummyimage.com/155x100.png/dddddd/000000",
+  IMDbrating: 27
+},
+{
+  moviename: "Star Trek Into Darkness",
+  releasedate: "7/20/2021",
+  poster: "http://dummyimage.com/138x100.png/cc0000/ffffff",
+  IMDbrating: 90
+}, 
+{
+  movienme: "The Concert for Bangladesh",
+  releasedate: "10/19/2021",
+  poster: "http://dummyimage.com/142x100.png/5fa2dd/ffffff",
+  IMDbrating: 43
+},
+ {
+  moviename: "Choke",
+  releasedate: "8/15/2021",
+  poster: "http://dummyimage.com/112x100.png/dddddd/000000",
+  IMDbrating: 28
+},
+ {
+  moviename: "4th Floor, The",
+  releasedate: "10/12/2021",
+  poster: "http://dummyimage.com/164x100.png/dddddd/000000",
+  IMDbrating: 73
+}, 
+{
+  moviename: "Twilight of the Ice Nymphs",
+  releasedate: "11/21/2021",
+  poster: "http://dummyimage.com/208x100.png/5fa2dd/ffffff",
+  IMDbrating: 65
+},
+ {
+  moviename: "Penguins of Madagascar",
+  releasedate: "9/28/2021",
+  poster: "http://dummyimage.com/109x100.png/ff4444/ffffff",
+  IMDbrating: 93
+}, 
+{
+  moviename: "Seabiscuit",
+  releasedate: "7/11/2021",
+  poster: "http://dummyimage.com/177x100.png/5fa2dd/ffffff",
+  IMDbrating: 26
+}];
+
+localStorage.setItem("movies",JSON.stringify(movies));
+
+</script>

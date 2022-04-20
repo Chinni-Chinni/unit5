@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movies print in grid</title>
+    <link rel = "stylesheet" href="index.css">
+</head>
+<body>
+    <div class = "container"></div>
+    
+</body>
+</html>
+
+<script>
+var movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+//console.log(movies);
+
+function display(){
+    movies.forEach(function(movies){
+        var box = document.createElement("div");
+        box.setAttribute("class","box")
+
+        var name = document.createElement("p");
+        name.innerText = movies.moviename;
+
+        var img = document.createElement("img");
+        img.src = movies.poster;
+
+        var releasedate = document.createElement("p");
+        releasedate.innerText = movies.releasedate;
+
+        var idmb = document.createElement("p");
+        idmb.innerText = movies.IMDbrating
+
+        box.append(img,name,releasedate,idmb);
+
+        document.querySelector(".container").append(box);
+
+
+
+    })
+}
+
+display()
+
+
+
+
+</script>

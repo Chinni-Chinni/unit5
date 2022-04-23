@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel = "stylesheet" href="index1.css">
+</head>
+<body>
+    <h1>login page</h1>
+    <div id = "navbar">
+        <div><a href = "index1.html">Home page</a></div> 
+         <div><a href = "login.html">Login</a></div>
+         <div><a href = "signUp.html"> singUp page</a></div>
+     </div>
+
+     <form id = "login">
+         <p>Name</p>
+         <input type = "email" id ="email" placeholder="EnterMail">
+         <p>password</p>
+         <input type = "password" id = "password" placeholder="Enterpassword">
+         <br>
+         <input type = "submit" id = "submit" value = "login">
+     </form>
+    
+</body>
+</html>
+
+<script>
+
+document.querySelector("form").addEventListener("submit",loginFn);
+
+var logindata = JSON.parse(localStorage.getItem("signUp")) || [];
+
+// console.log(logindata)
+
+function loginFn(){
+    event.preventDefault();
+    alert("Login successfully")
+    window.location.href = "index1.html"
+}
+
+
+
+
+</script>

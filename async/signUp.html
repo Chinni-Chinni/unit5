@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
+    <link rel = "stylesheet" href="index1.css">
+</head>
+<body>
+    <h1>signUp page</h1>
+    <div id = "navbar">
+        <div><a href = "index1.html">Home page</a></div> 
+         <div><a href = "login.html">Login</a></div>
+         <div><a href = "signUp.html"> singUp page</a></div>
+     </div>
+
+    
+
+     <form id = "signUpform">
+         <p>Name</p>
+         <input type = "text" id = "name" placeholder="Entername">
+         <p>ContactNumber</p>
+         <input type = "number" id = "contact" placeholder="EnterNumber">
+         <p>Email</p>
+         <input type="email" id = "email" placeholder="EnterMail">
+         <p>Password</p>
+         <input type = "password" id = "password" placeholder="Enter Password"><br>
+         <input type = "submit" id = "submit" value="SignUp">
+        
+     </form>
+     
+</body>
+</html>
+
+<script>
+ 
+//  var signUp = JSON.parse(localStorage.getItem("signUp")) || [];
+document.querySelector("form").addEventListener("submit",signUpfun);
+
+ var signUpArr;
+
+ if(localStorage.getItem("signUp")===null){
+     signUpArr = [];
+ }else{
+     signUpArr = JSON.parse(localStorage.getItem("signUp"));
+ }
+
+
+
+ function signUpfun(){
+     event.preventDefault();
+
+     var signUpDetails={
+      name : document.querySelector("#name").value,
+      number : document.querySelector("#contact").value,
+      email : document.querySelector("#email").value,
+      password : document.querySelector("#password").value,
+     }
+     if(signUpDetails.name.length===0 ||signUpDetails.number.length===0 || signUpDetails.email.length===0 || signUpDetails.password.length ==0  ){
+         alert("please enter all feild")
+     }else{
+         
+        signUpArr.push(signUpDetails);
+        localStorage.setItem("signUp",JSON.stringify(signUpArr));
+        window.location.href = "./login.html";
+
+     }
+
+     }
+
+    
+    
+
+
+</script>

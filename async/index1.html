@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel = "stylesheet" href="index1.css">
+</head>
+<body>
+    <h1>Home page</h1>
+<div id = "navbar">
+    <div><a href = "index1.html">Home page</a></div> 
+    <div><a href = "login.html">Login</a></div>
+    <div><a href = "signUp.html"> singUp page</a></div>
+</div>
+
+<div id = "container"></div>
+    
+</body>
+</html>
+
+<script>
+var images = [
+    "https://archive.gulte.com/content/2020/03/photos/movies/30-Rojullo-Preminchatam-Ela-Latest-Stills/30-Rojullo-Preminchatam-Ela-Latest-Stills.jpg",
+    "https://imgcdn.ragalahari.com/jan2022/designs/ranga-ranga-vaibhavanga-posters/ranga-ranga-vaibhavanga-posters1t.jpg",
+    "https://i1.behindwoods.com/telugu-movies/chal-mohan-ranga/thumbnails/related-section-image-chal-mohan-ranga-6.jpg",
+];
+
+var container = document.querySelector("#container");
+
+function start(){
+    var count = 0;
+    setInterval(function(){
+        container.innerHTML = null;
+        if(count===images.length){
+            count = 0;
+        }
+        var box = document.createElement("div");
+        box.setAttribute("id","box");
+        var img = document.createElement("img");
+        img.src = images[count];
+        box.append(img)
+        container.append(box);
+        count++;
+    },1500)
+    
+}
+
+start();
+
+
+
+
+</script>

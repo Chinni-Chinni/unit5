@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array custom</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    function MyArray(){
+        Object.defineProperty(this,"length",{
+            enumerable : false,
+            writable:true,
+        })
+
+        for(var index=0;index<arguments.length;index++){
+            this[index] = arguments[index]
+
+        }
+        this.length = arguments.length;
+    }
+
+
+    MyArray.prototype.push = function(item){
+        let index = this.length;
+        this[index] = item;
+        this.length++;
+
+
+    }
+
+    MyArray.prototype.pop = function(item){
+        let index = this.length-1;
+        var poppedItem = this[index];
+        delete this[index];
+        this.length--;
+        return poppedItem;
+       
+    }
+
+    MyArray.prototype.top = function(){
+        var index = this.length-1;
+        var topElement = this[index];
+        return topElement;
+
+    }
+
+    MyArray.prototype.print = function(arr){
+        var arr1 = [];
+        var index = this.length;
+       for(var i=0;i<index;i++){
+           arr1.push(arr[i])
+       }
+       return arr1.join(" ")
+
+    }
+
+    MyArray.prototype.reverse = function(arr){
+        var index = this.length ; 
+        var arr2 = [];
+        for(var i=index;i>=0;i--){
+            arr2.push(arr[i]);
+        }
+        return arr2.join(" ");
+
+    }
+
+    MyArray.prototype.size = function(){
+        var index = this.length;
+        return index;
+    }
+var arr = new MyArray(1,2,3,4);
+
+console.log(arr);
+
+arr.push(6);
+arr.push(9);
+arr.push(8)
+
+var poppedItem = arr.pop();
+console.log(`popped item ${poppedItem}`)
+
+
+var topElement = arr.top();
+console.log(`topElement ${topElement}`);
+
+var printArr = arr.print(arr);
+console.log(`printtheArr ${printArr}`);
+
+var reverseTheArr = arr.reverse(arr);
+console.log(`reverseTheArr ${reverseTheArr}`);
+
+var sizeOfStack = arr.size();
+console.log(`sizeOfStack ${sizeOfStack}`);
+
+
+</script>
+
+
+

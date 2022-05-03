@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call function</title>
+</head>
+<body>
+    <h1>Call Function</h1>
+    
+</body>
+</html>
+
+<script>
+
+    // FOR AMAR THE SKILLS BORROWED FROM OTHER TWO FRDS
+
+function amar(name,work,place){
+    console.log(`Name: ${name} work: ${work} place: ${place}`);
+    console.log(this);
+}
+
+amar.call({
+    akbarSkill : "chef",
+    anthonySkill : "",
+
+},"Amar","Singer","Goa");
+
+// FOR AKBAR THE SKILLS BORROWED FROM OTHER TWO FRDS
+
+function akbar(name,work,place){
+    console.log(`Name: ${name} work: ${work} place: ${place}`);
+    console.log(this);
+}
+
+akbar.call({
+    amarSkill : "singer",
+    anthonySkill : "Magician",
+
+},"akbar","chef","mumbai");
+
+// FOR ANOTHONY THE SKILLS BORROWED FROM OTHER TWO FRDS.
+
+function anthony(name,work,place){
+    console.log(`Name: ${name} work: ${work} place: ${place}`);
+    console.log(this);
+}
+
+anthony.call({
+    amarSkill : "singer",
+    akbarSkill : "Chef",
+
+},"anthony","magician","kashmir");
+
+</script>

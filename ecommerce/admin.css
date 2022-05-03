@@ -1,0 +1,32 @@
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    width: 40%;
+    margin: auto;
+    border: 5px solid gray;
+
+}
+form>input{
+    margin: 20px;
+    padding: 8px;
+    border: 2px solid black;
+}
+#gender{
+    width: 520px;
+    margin-left: 22px;
+    padding: 5px;
+    border: 2px solid black;
+}
+#amazon{
+    text-align: center;
+}
+#amazon>img{
+    width: 200px;
+}
+#submit{
+    width: 300px;
+    margin-left:150px;
+    font-size: 20px;
+    background-color: antiquewhite;
+}

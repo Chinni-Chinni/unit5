@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ecommerce</title>
+    <link rel = "stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="amazon">
+        <img src = "https://image.shutterstock.com/image-photo/kiev-ukraine-may-07-2015-260nw-276929006.jpg" >
+    </div>
+   
+    <form >
+        <h1 style="text-align:center">ADMIN</h1>
+        <input type = "text" id = "name" placeholder = "ProductName" >
+        <input type = "text" id = "catogory" placeholder="Catogory">
+        <input type = "url" id = "image" placeholder="uploadimg">
+      
+        <input type="text" placeholder="Sold" value=false id="sold" >
+        <select id="gender">
+            <option value="Male">Male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+
+        </select>
+        <input type="submit" id = "submit">
+    </form>
+    
+</body>
+</html>
+
+<script>
+    // var adminData = JSON.parse(localStorage.getItem("adminData")) || []
+    //   function admin(productName,catogory,image,sold,gender){
+    //     this.productName = productName,
+    //     this.catogory = catogory,
+    //     this.image = image,
+    //     this.sold = sold,
+    //     this.gender = gender
+
+    // }
+     
+    // document.querySelector("form").addEventListener("submit",function(){
+    //     event.preventDefault()
+    //        var productName =  document.querySelector("#name").value;
+    //        var catogory = document.querySelector("#catogory").value;
+    //         var image = document.querySelector("#image").value;
+    //         var sold =  document.querySelector("#sold").value;
+    //         var gender = document.querySelector("#gender").value;
+    //       var item1 = new admin(productName,catogory,image,sold,gender)
+    //     adminData.push(item1);
+    //     localStorage.setItem("adminData",JSON.stringify(adminData));
+
+    // });
+ 
+    // console.log(adminData)
+
+
+
+    
+
+  var adminData = JSON.parse(localStorage.getItem("adminData")) || [];
+
+    document.querySelector("form").addEventListener("submit",function(){
+        event.preventDefault();
+        var adminObjData={
+            productName : document.querySelector("#name").value,
+            catogory : document.querySelector("#catogory").value,
+            image : document.querySelector("#image").value,
+            sold: document.querySelector("#sold").value,
+            gender : document.querySelector("#gender").value,
+        }
+        console.log(adminObjData.gender);
+        adminData.push(adminObjData);
+        localStorage.setItem("adminData",JSON.stringify(adminData));
+        console.log(adminData)
+
+
+    });
+   
+    
+    
+</script>

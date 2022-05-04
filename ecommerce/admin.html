@@ -8,6 +8,7 @@
     <link rel = "stylesheet" href="admin.css">
 </head>
 <body>
+    <a href="product.html">adminData</a>
     <div id="amazon">
         <img src = "https://image.shutterstock.com/image-photo/kiev-ukraine-may-07-2015-260nw-276929006.jpg" >
     </div>
@@ -32,53 +33,56 @@
 </html>
 
 <script>
-    // var adminData = JSON.parse(localStorage.getItem("adminData")) || []
-    //   function admin(productName,catogory,image,sold,gender){
-    //     this.productName = productName,
-    //     this.catogory = catogory,
-    //     this.image = image,
-    //     this.sold = sold,
-    //     this.gender = gender
-
-    // }
+    var adminData = JSON.parse(localStorage.getItem("adminData")) || []
      
-    // document.querySelector("form").addEventListener("submit",function(){
-    //     event.preventDefault()
-    //        var productName =  document.querySelector("#name").value;
-    //        var catogory = document.querySelector("#catogory").value;
-    //         var image = document.querySelector("#image").value;
-    //         var sold =  document.querySelector("#sold").value;
-    //         var gender = document.querySelector("#gender").value;
-    //       var item1 = new admin(productName,catogory,image,sold,gender)
-    //     adminData.push(item1);
-    //     localStorage.setItem("adminData",JSON.stringify(adminData));
+    function admin(productName,catogory,image,sold,gender){
+        this.productName = productName,
+        this.catogory = catogory,
+        this.image = image,
+        this.sold = sold,
+        this.gender = gender
 
-    // });
+    }
+     
+    document.querySelector("form").addEventListener("submit",function(){
+        event.preventDefault()
+           var productName =  document.querySelector("#name").value;
+           var catogory = document.querySelector("#catogory").value;
+            var image = document.querySelector("#image").value;
+            var sold =  document.querySelector("#sold").value;
+            var gender = document.querySelector("#gender").value;
+          var item1 = new admin(productName,catogory,image,sold,gender);
+          alert("added successfully!")
+        adminData.push(item1);
+        localStorage.setItem("adminData",JSON.stringify(adminData));
+
+    });
  
-    // console.log(adminData)
+    console.log(adminData)
 
 
 
     
 
-  var adminData = JSON.parse(localStorage.getItem("adminData")) || [];
+//   var adminData = JSON.parse(localStorage.getItem("adminData")) || [];
 
-    document.querySelector("form").addEventListener("submit",function(){
-        event.preventDefault();
-        var adminObjData={
-            productName : document.querySelector("#name").value,
-            catogory : document.querySelector("#catogory").value,
-            image : document.querySelector("#image").value,
-            sold: document.querySelector("#sold").value,
-            gender : document.querySelector("#gender").value,
-        }
-        console.log(adminObjData.gender);
-        adminData.push(adminObjData);
-        localStorage.setItem("adminData",JSON.stringify(adminData));
-        console.log(adminData)
+//     document.querySelector("form").addEventListener("submit",function(){
+//         event.preventDefault();
+//         var adminObjData={
+//             productName : document.querySelector("#name").value,
+//             catogory : document.querySelector("#catogory").value,
+//             image : document.querySelector("#image").value,
+//             sold: document.querySelector("#sold").value,
+//             gender : document.querySelector("#gender").value,
+//         }
+//         alert("added successfully!")
+//         console.log(adminObjData.gender);
+//         adminData.push(adminObjData);
+//         localStorage.setItem("adminData",JSON.stringify(adminData));
+//         console.log(adminData)
 
 
-    });
+//     });
    
     
     

@@ -30,9 +30,9 @@
 <script>
 
     var productData = JSON.parse(localStorage.getItem("adminData"))||[];
-    console.log(productData)
+    // console.log(productData)
 
-    function display(){
+    function display(productData){
         document.querySelector("#container").innerHTML = "";
         productData.forEach(function(Data,index){
 
@@ -55,13 +55,14 @@
             sold.innerText = Data.sold;
 
             var removeBtn = document.createElement("button");
-            removeBtn.innerText = "Remove"
-            removeBtn.addEventListener("click",function(){
-                productData.splice(index,1);
-                localStorage.setItem("productdata",JSON.stringify(productData));
-                window.location.reload();
+            removeBtn.innerText = "Remove Item";
 
-            })
+            removeBtn.addEventListener("click",function(){
+            productData.splice(index,1);
+            localStorage.setItem("productData",JSON.stringify(productData));
+            window.location.reload();
+
+        })
 
             box.append(productName,catogory,image,gender,sold,removeBtn);
             document.querySelector("#container").append(box)
@@ -71,5 +72,5 @@
 
     }
 
-    display();
+    display(productData);
 </script>

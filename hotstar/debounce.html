@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+</head>
+<style>
+    #container{
+        width: 40%;
+        margin: auto;
+    }
+    input{
+        width: 250px;
+        padding: 20px;
+        height: 20px;
+        font-size: 30px;
+        margin: 20px 0px 20px 0px;
+    }
+    #container >div{
+        width: 290px;
+        height: 230px;
+        border: 2px solid gray;
+        overflow-y: scroll;
+
+    }
+   
+</style>
+<body>
+    <div id = "container">
+    <input type = "text" placeholder="Search Here" id="query" oninput="debounce(main,1000)">
+    <div id = "movie"></div>
+    </div>
+    
+    
+</body>
+</html>
+<script>
+    async function main(){
+        try{
+            let data = await searchMovie();
+            if(!data){
+                return false;
+            }
+
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    async function searchMovie(){
+        try{
+        let movie = document.querySelector("#query").value;
+        var url = `http://www.omdbapi.com/?i=tt3896198&apikey=76f620fb&s=${movie}`;
+
+        var res = await fetch(url);
+        var data = await res.json();
+        displayMovie(data);
+        }
+        catch(err){
+            var erroDiv = document.createElement("div");
+            var error = document.createElement("h2");
+            error.innerText = "NO MOVIE FOUND";
+            erroDiv.append(error);
+            document.querySelector("#movie").append(erroDiv);
+            console.log(err);
+        }
+    }
+// Title: 'DFD Day', Year: '2005', imdbID: 'tt0765504', Type: 'movie', Poster: 'N/A'
+
+    function displayMovie(movieData){
+        document.querySelector("#movie").innerText = "";
+    movieData.Search.forEach(function(moviedata){
+        
+        var movieDiv = document.createElement("div");
+        movieDiv.setAttribute("id","movieDiv");
+
+        var title = document.createElement("p");
+        title.innerText = moviedata.Title;
+
+        movieDiv.append(title);
+        document.querySelector("#movie").append(movieDiv);
+
+    })
+
+    }
+let timerId;
+function debounce(fun,delay){
+    if(timerId){
+        clearTimeout(timerId);
+    }
+    timerId = setTimeout(function(){
+        fun();
+    },delay)
+}
+
+
+</script>

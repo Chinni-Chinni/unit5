@@ -1,100 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debounce</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debounce</title>
 </head>
 <style>
-    #container{
-        width: 40%;
-        margin: auto;
-    }
-    input{
-        width: 250px;
-        padding: 20px;
-        height: 20px;
-        font-size: 30px;
-        margin: 20px 0px 20px 0px;
-    }
-    #container >div{
-        width: 290px;
-        height: 230px;
-        border: 2px solid gray;
-        overflow-y: scroll;
+#container{
+    text-align: center;
+    
+    
+}
+input{
+    width: 250px;
+    padding: 20px;
+    height: 20px;
+    font-size: 30px;
+    margin: 20px 0px 20px 0px;
+}
+#movie{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    margin: auto;
+    text-align: center;
+    margin-top: 30px;
 
-    }
-   
+}
+#movie>div{
+    border: 2px solid gray;
+}
+img{
+    width:100% ;
+    height: 300px;
+}
+
 </style>
 <body>
-    <div id = "container">
-    <input type = "text" placeholder="Search Here" id="query" oninput="debounce(main,1000)">
-    <div id = "movie"></div>
-    </div>
-    
-    
+<div id = "container">
+<input type = "text" placeholder="Search Here" id="query" oninput="debounce(main,1000)">
+<div id = "movie"></div>
+</div>
+
+
 </body>
 </html>
 <script>
-    async function main(){
-        try{
-            let data = await searchMovie();
-            if(!data){
-                return false;
-            }
+//waiting for the data
+async function main(){
+    try{
+        let data = await searchMovie();
+        if(!data){
+            return false;
+        }
 
-        }
-        catch(err){
-            console.log(err);
-        }
     }
-
-    async function searchMovie(){
-        try{
-        let movie = document.querySelector("#query").value;
-        var url = `http://www.omdbapi.com/?i=tt3896198&apikey=76f620fb&s=${movie}`;
-
-        var res = await fetch(url);
-        var data = await res.json();
-        displayMovie(data);
-        }
-        catch(err){
-            var erroDiv = document.createElement("div");
-            var error = document.createElement("h2");
-            error.innerText = "NO MOVIE FOUND";
-            erroDiv.append(error);
-            document.querySelector("#movie").append(erroDiv);
-            console.log(err);
-        }
+    catch(err){
+        console.log(err);
     }
+}
+// getting the data from api key
+async function searchMovie(){
+    try{
+    let movie = document.querySelector("#query").value;
+    var url = `http://www.omdbapi.com/?i=tt3896198&apikey=76f620fb&s=${movie}`;
+
+    var res = await fetch(url);
+    var data = await res.json();
+    displayMovie(data);
+    }
+    catch(err){
+        var erroDiv = document.createElement("div");
+        var error = document.createElement("h2");
+        error.innerText = "NO MOVIE FOUND";
+        erroDiv.append(error);
+        document.querySelector("#movie").append(erroDiv);
+        console.log(err);
+    }
+}
 // Title: 'DFD Day', Year: '2005', imdbID: 'tt0765504', Type: 'movie', Poster: 'N/A'
+//Display the Data
+function displayMovie(movieData){
+    console.log(movieData.Search)
+    document.querySelector("#movie").innerText = "";
+movieData.Search.forEach(function(moviedata){
+    
+    var movieDiv = document.createElement("div");
+    movieDiv.setAttribute("id","movieDiv");
 
-    function displayMovie(movieData){
-        document.querySelector("#movie").innerText = "";
-    movieData.Search.forEach(function(moviedata){
-        
-        var movieDiv = document.createElement("div");
-        movieDiv.setAttribute("id","movieDiv");
+    var movieImg = document.createElement("img");
+    movieImg.src = moviedata.Poster;
 
-        var title = document.createElement("p");
-        title.innerText = moviedata.Title;
+    var title = document.createElement("p");
+    title.innerText = moviedata.Title;
 
-        movieDiv.append(title);
-        document.querySelector("#movie").append(movieDiv);
+    var yearOfRelease = document.createElement("h3");
+    yearOfRelease.innerText = "release"+moviedata.Year;
 
-    })
+    var type = document.createElement("p");
+    type.innerText = "type is"+ " "+ moviedata.Type;
 
-    }
-let timerId;
-function debounce(fun,delay){
-    if(timerId){
-        clearTimeout(timerId);
-    }
-    timerId = setTimeout(function(){
-        fun();
-    },delay)
+    var idmbRating = document.createElement("p");
+    idmbRating.innerText = moviedata.imdbID;
+
+    movieDiv.append(movieImg,yearOfRelease,title,type,idmbRating);
+    document.querySelector("#movie").append(movieDiv);
+
+})
+
 }
 
-
+//setting debounce.
+let timerId;
+function debounce(fun,delay){
+if(timerId){
+    clearTimeout(timerId);
+}
+timerId = setTimeout(function(){
+    fun();
+},delay)
+}
 </script>
+
+
+<!-- //Poster: "https://m.media-amazon.com/images/M/MV5BMjAzODI5ODYyNl5BMl5BanBnXkFtZTgwNDkzNjkxNzE@._V1_SX300.jpg"
+Title: "Dag"
+Type: "series"
+Year: "2010–2015"
+imdbID: "tt1711386"// -->

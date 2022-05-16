@@ -17,7 +17,7 @@
         <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png" class="logo" alt=""/>
         <div class="search-box">
             <input type="text" class="search-bar" placeholder="search">
-            <button class="search-btn"><img src = "https://www.pngfind.com/pngs/m/104-1043692_search-icon-transparent-white-search-icon-apple-png.png"/></button>
+            <button class="search-btn" onclick="Search()"><img src = "https://www.pngfind.com/pngs/m/104-1043692_search-icon-transparent-white-search-icon-apple-png.png"/></button>
 
         </div>
         <div class="user-options">
@@ -28,8 +28,54 @@
         </div>
 
     </nav>
-    
+    <div id="youtubeContainer"></div>
 </body>
 </html>
 
-<script src="youtube.js"></script>
+<script>
+    const API_KEY = "AIzaSyBV_WV_IWsKhwhbMp9FvBi4hCHuY7yVpd4";
+    const Search = async() =>
+    {
+        try{
+        const searchElement = document.querySelector(".search-bar").value;
+        // console.log(searchElement)
+        const url = ` https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=${searchElement}&key=${API_KEY}&type=video&part=snippet`;
+        const res = await fetch(url);
+        var data = await res.json();
+        // console.log(data.items);
+        disPlayData(data.items)
+
+
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    const disPlayData=(data)=>{
+        document.querySelector("#youtubeContainer").innerText = "";
+        data.forEach(function (video){
+            const youtubeDiv = document.createElement("div");
+        
+const {id:{videoId},snippet:{title,thumbnails:{medium:{url}}}}=video;
+            const videoTitle = document.createElement("h4");
+            videoTitle.innerText = title;
+            // videoTitle.setAttribute("id","videoTitle");
+
+            const thumbnail = document.createElement("img");
+            thumbnail.src = url;
+            thumbnail.setAttribute("id","thumbnail");
+
+            youtubeDiv.append(thumbnail,videoTitle);
+
+            youtubeDiv.onclick = function(){
+                localStorage.setItem("videoId",video.id.videoId);
+                window.location.href = "videoPage.html"
+            }
+            document.querySelector("#youtubeContainer").append(youtubeDiv);
+        
+            
+        })
+
+    }
+</script>
+

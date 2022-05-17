@@ -3,8 +3,8 @@ img{
     height: 200px;
 }
 
-#throwDice{
-    
+#throwDice1,#throwDice2 ,#throwDice3{
+
     display: inline-block;
     justify-content: space-evenly;
     margin-left: 150px;

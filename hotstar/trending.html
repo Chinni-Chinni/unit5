@@ -7,10 +7,80 @@
     <title>Trending</title>
 </head>
 <body>
+    <h1>The Popular Movie Data</h1>
+    <div id = "mainContainer"></div>
     
 </body>
+<style>
+    h1{
+        text-align: center;
+    }
+    #mainContainer{
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        grid-gap: 30px;
+        margin: 40px 0px 0px 120px;
+        text-align: center;
+    }
+    #mainContainer>div{
+        border: 2px solid gray;
+    }
+</style>
 </html>
 <script>
-    const url = `https://developers.themoviedb.org/4`;
-    console.log(url)
+//     adult: false
+// backdrop_path: "/gG9fTyDL03fiKnOpf2tr01sncnt.jpg"
+// genre_ids: (3) [28, 878, 14]
+// id: 526896
+// media_type: "movie"
+// original_language: "en"
+// original_title: "Morbius"
+// overview: "Dangerously ill with a rare blood disorder, and determined to save others suffering his same fate, Dr. Michael Morbius attempts a desperate gamble. What at first appears to be a radical success soon reveals itself to be a remedy potentially worse than the disease."
+// popularity: 1646.18
+// poster_path: "/h4WLN3cmEjCsH1fNGRfvGV6IPBX.jpg"
+// release_date: "2022-03-30"
+// title: "Morbius"
+// video: false
+// vote_average: 6
+// vote_count: 723
+   
+     var url = `https://api.themoviedb.org/3/trending/all/day?api_key=28267c322fefda60e2ae7d35b95e2a48`;
+    async function getData(){
+        try{
+            
+      var res = await fetch(url);
+        var data = await res.json();
+        console.log(data.results)
+        displayData(data.results);
+
+        }catch(err){
+            console.log(err);
+        }
+       
+    }
+    getData()
+
+    function displayData(data){
+        document.querySelector("#mainContainer").innerText = "";
+        data.forEach(element => {
+           var div  = document.createElement("div");
+           div.setAttribute("id","movieContainer");
+
+
+           var media_type = document.createElement("h3");
+           media_type.innerText = element.media_type;
+
+           var lang = document.createElement("p");
+           lang.innerText = element.original_language;
+        
+           var title = document.createElement("h2");
+           title.innerText = element.original_title;
+
+           div.append(title,media_type,lang);
+           document.querySelector("#mainContainer").append(div);
+        });
+    }
 </script>

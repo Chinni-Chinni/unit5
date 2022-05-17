@@ -42,6 +42,7 @@ img{
 <body>
 <div id = "container">
 <input type = "text" placeholder="Search Here" id="query" oninput="debounce(main,1000)">
+<div id = "movie1"></div>
 <div id = "movie"></div>
 </div>
 
@@ -87,8 +88,18 @@ function displayMovie(movieData){
     console.log(movieData.Search)
     document.querySelector("#movie").innerText = "";
 movieData.Search.forEach(function(moviedata){
-    
+
     var movieDiv = document.createElement("div");
+        movieDiv.setAttribute("id","movieDiv");
+
+        var title = document.createElement("p");
+        title.innerText = moviedata.Title;
+        console.log(title);
+
+        movieDiv.append(title);
+        document.querySelector("#movie1").append(movieDiv);
+    
+    var movieDiv1 = document.createElement("div");
     movieDiv.setAttribute("id","movieDiv");
 
     var movieImg = document.createElement("img");
@@ -106,8 +117,8 @@ movieData.Search.forEach(function(moviedata){
     var idmbRating = document.createElement("p");
     idmbRating.innerText = moviedata.imdbID;
 
-    movieDiv.append(movieImg,yearOfRelease,title,type,idmbRating);
-    document.querySelector("#movie").append(movieDiv);
+    movieDiv1.append(movieImg,yearOfRelease,title,type,idmbRating);
+    document.querySelector("#movie").append(movieDiv1);
 
 })
 

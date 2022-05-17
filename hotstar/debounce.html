@@ -72,7 +72,7 @@
 // Title: 'DFD Day', Year: '2005', imdbID: 'tt0765504', Type: 'movie', Poster: 'N/A'
 //Display the Data
     function displayMovie(movieData){
-        document.querySelector("#movie").innerText = "";
+        // document.querySelector("#movie").innerText = "";
     movieData.Search.forEach(function(moviedata){
         
         var movieDiv = document.createElement("div");
@@ -80,6 +80,7 @@
 
         var title = document.createElement("p");
         title.innerText = moviedata.Title;
+        console.log(title);
 
         movieDiv.append(title);
         document.querySelector("#movie").append(movieDiv);

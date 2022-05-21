@@ -44,3 +44,30 @@ input:hover{
 #container1{
     text-align: center;
 }
+/* loginPage and signUp */
+
+
+
+#loginData > input{
+    border: 2px solid gray;
+    text-align: center;
+}
+#loginData , #signUp{
+    margin: 2% 30% 0% 40%;
+    
+}
+#loginData > form,#signUp > form{
+    display: flex;
+    flex-direction: column;
+}
+ #loginImg,#signImg{
+     width: 150px;
+     height: 60px;
+     margin: 10px 0px 20px 50px;
+ }
+ #loginData input,#signUp input{
+     margin-bottom: 20px;
+ }
+ #signBtn,#loginBtn{
+     width: 320PX;
+ }

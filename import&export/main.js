@@ -4,7 +4,7 @@
  navbarContainer.innerHTML = navbar();
 
 
-
+// for search page
 const container = document.querySelector("#container");
     
   const Searchmain = async()=>{
@@ -89,11 +89,13 @@ const container = document.querySelector("#container");
     }
     }
 
+    
+
+    // For Home page
     const homePage = async ()=>{
         
              try{
                 
-                 
                  const url = `https://www.themealdb.com/api/json/v1/1/random.php`;
                  const res = await fetch(url);
                  const data = await res.json();
@@ -108,5 +110,13 @@ const container = document.querySelector("#container");
          }
          homePage();
 
-    document.querySelector("#search").addEventListener('input',debounce(Searchmain,1000));
+     document.querySelector("#search").addEventListener("input",debounce(Searchmain,1000))
 
+let getloginData = JSON.parse(localStorage.getItem("logindata")) || [];
+var divcont = document.createElement("div");
+var p =  document.createElement("p");
+var p1 = document.createElement("p");
+p.innerText = `User mail is : ${getloginData.mail}`;
+p1.innerText = `User password id:${getloginData.password}`;
+divcont.append(p,p1);
+document.querySelector("#Login").append(divcont);

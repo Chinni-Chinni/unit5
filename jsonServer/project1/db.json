@@ -1,0 +1,132 @@
+{
+  "students": [
+    {
+      "Name": "Chinni",
+      "Age": "20",
+      "gender": "Male",
+      "Marks": "78",
+      "Cohorat": "ptweb4",
+      "id": 2
+    },
+    {
+      "Name": "venky",
+      "Age": "22",
+      "gender": "male",
+      "Marks": "89",
+      "Cohorat": "ptweb2",
+      "id": 3
+    },
+    {
+      "Name": "Gunner",
+      "Age": 15,
+      "gender": "Female",
+      "Marks": 36,
+      "Cohorat": "ptweb1",
+      "id": 4
+    },
+    {
+      "Name": "Iolande",
+      "Age": 97,
+      "gender": "Male",
+      "Marks": 68,
+      "Cohorat": "ptweb3",
+      "id": 5
+    },
+    {
+      "Name": "Harv",
+      "Age": 93,
+      "gender": "Male",
+      "Marks": 91,
+      "Cohorat": "ptweb1",
+      "id": 6
+    },
+    {
+      "Name": "Rollins",
+      "Age": 72,
+      "gender": "Other",
+      "Marks": 33,
+      "Cohorat": "ptweb1",
+      "id": 7
+    },
+    {
+      "Name": "Abbott",
+      "Age": 49,
+      "gender": "Female",
+      "Marks": 95,
+      "Cohorat": "ptweb2",
+      "id": 8
+    },
+    {
+      "Name": "Marlin",
+      "Age": 36,
+      "gender": "Male",
+      "Marks": 70,
+      "Cohorat": "ptweb3",
+      "id": 10
+    },
+    {
+      "Name": "Tyrone",
+      "Age": 77,
+      "gender": "Female",
+      "Marks": 9,
+      "Cohorat": "ptweb2",
+      "id": 11
+    },
+    {
+      "Name": "Ranna",
+      "Age": 4,
+      "gender": "Male",
+      "Marks": 73,
+      "Cohorat": "ptweb2",
+      "id": 12
+    },
+    {
+      "Name": "Faulkner",
+      "Age": 100,
+      "gender": "Female",
+      "Marks": 66,
+      "Cohorat": "ptweb1",
+      "id": 13
+    },
+    {
+      "Name": "Arnaldo",
+      "Age": 31,
+      "gender": "Other",
+      "Marks": 5,
+      "Cohorat": "ptweb2",
+      "id": 14
+    },
+    {
+      "Name": "Buddy",
+      "Age": 23,
+      "gender": "Other",
+      "Marks": 82,
+      "Cohorat": "ptweb3",
+      "id": 15
+    },
+    {
+      "Name": "Odetta",
+      "Age": 20,
+      "gender": "Male",
+      "Marks": 61,
+      "Cohorat": "ptweb3",
+      "id": 17
+    },
+    {
+      "Name": "Ch",
+      "Age": "30",
+      "gender": "Male",
+      "Marks": "90",
+      "Cohorat": "ptweb2",
+      "id": 18
+    },
+    {
+      "Name": "Venky",
+      "Age": "22",
+      "gender": "Male",
+      "Marks": "61",
+      "Cohorat": "ptweb4",
+      "id": 19
+    }
+  ]
+}

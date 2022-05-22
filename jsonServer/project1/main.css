@@ -1,0 +1,36 @@
+/* index data */
+ table,tr,th,td{
+    border: 2px solid gray;
+
+}
+#container{
+    margin-left: 550px;
+}
+th{
+    font-size: 25px;
+}
+td{
+    font-size: 20px;
+}
+h1{
+    text-align: center;
+}
+
+/* //inputData */
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    border: 2px solid gray;
+    justify-content: space-between;
+    margin-bottom: 40px;
+   
+}
+input,select {
+    padding: 15px;
+}
+#createBtn,#inputData{
+    padding: 10px;
+    font-size: 20px;
+}

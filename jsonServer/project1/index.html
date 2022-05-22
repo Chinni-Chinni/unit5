@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD USING JSON SERVER</title>
+</head>
+<link rel="stylesheet" href="main.css">
+<body>
+    <h1>CRUD USING JSON SERVER</h1>
+    <form>
+        <input type="text" placeholder="Name" id = "name">
+        <input type="text" placeholder="Age" id = "age">
+        <select id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="other">Other</option>
+        <select>
+        <input type="text" placeholder="Marks" id="marks">
+        <input type="text" placeholder="Cohorat" id = "cohorat">
+        <button onclick="createStudent()" id = "createBtn">createStudent</button>
+    </form>
+    
+    
+    <div id = "container"></div>
+</body>
+</html>
+<script>
+
+    const container = document.querySelector("#container");
+
+    const createStudent = async()=>{
+        // document.querySelector("#container").innerText = "";
+         try{
+       
+         var body={
+         Name : document.querySelector("#name").value,
+         Age : +document.querySelector("#age").value,
+         gender : document.querySelector("#gender").value,
+         Marks : +document.querySelector("#marks").value,
+         Cohorat : document.querySelector("#cohorat").value,
+         }
+
+         var res = await fetch(` http://localhost:3000/students`,{
+             method:"POST",
+             body:JSON.stringify(body),
+             headers:{
+                 "Content-Type":"application/json"
+             }
+         })
+         var data = await res.json();
+         console.log(data);
+
+         }
+        catch(err){
+            console.log(err);
+        }
+
+
+     }
+
+    const getData = async ()=>{
+        const table = document.createElement("table");
+
+        const tbody = document.createElement("tbody")
+
+        const tr = document.createElement("tr");
+
+        const th1 = document.createElement("th"); 
+        th1.innerText = "ID"
+        const th2 = document.createElement("th"); 
+        th2.innerText = "Name";
+        const th3 = document.createElement("th"); 
+        th3.innerText = "Age";
+        const th4 = document.createElement("th"); 
+        th4.innerText = "Gender";
+        const th5 = document.createElement("th"); 
+        th5.innerText = "Marks";
+        const th6 = document.createElement("th"); 
+        th6.innerText = "Cohort";
+        const th7 = document.createElement("th");
+        th7.innerText = "DELETE";
+        const th8 = document.createElement("th");
+        th8.innerText = "EDIT";
+        tr.append(th1,th2,th3,th4,th5,th6,th7,th8);
+        tbody.append(tr);
+        table.append(tbody);
+        document.querySelector("#container").append(table);
+
+        const res = await fetch(` http://localhost:3000/students`);
+        const data = await res.json();
+        displayData(data,tbody,table);
+    }
+
+     getData();
+
+     const displayData = (data,tbody,table)=>{
+         
+         document.querySelector("#container").innerText = "";
+        data.forEach(studentData => {
+            const tr1 = document.createElement("tr");
+
+            const td1 = document.createElement("td");
+            td1.innerText = studentData.id;
+            const td2 = document.createElement("td");
+            td2.innerText = studentData.Name;
+            const td3 = document.createElement("td");
+            td3.innerText  = studentData.Age;
+            const td4 = document.createElement("td");
+            td4.innerText = studentData.gender;
+            const td5 = document.createElement("td");
+            td5.innerText = studentData.Marks;
+            const td6 = document.createElement("td");
+            td6.innerText = studentData.Cohorat;
+            const td7 = document.createElement("td");
+            const button = document.createElement("button");
+            button.innerText = "DELETE";
+            td7.append(button);
+            const td8 = document.createElement("td");
+            const btn2 = document.createElement("button");
+            btn2.innerText = "EDIT";
+            td8.prepend(btn2);
+
+            button.onclick = async function(){
+                const res = await fetch(`http://localhost:3000/students/${studentData.id}`,{
+                    method:'DELETE'
+                });
+
+            }
+
+            btn2.onclick = ()=>{
+                localStorage.setItem("studentId",JSON.stringify(studentData.id));
+                location.href = "./inputData.html";
+            }
+
+            tr1.append(td1,td2,td3,td4,td5,td6,td7,td8);
+            tbody.append(tr1);
+            table.append(tbody);
+            document.querySelector("#container").append(table);
+            
+        });
+
+
+
+
+     }
+
+    
+
+</script>

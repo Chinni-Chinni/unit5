@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userData</title>
+</head>
+<link rel="stylesheet" href="main.css">
+<body>
+    <h1>User Input Data</h1>
+    <form>
+        <input type="text" placeholder="Name" id="name">
+        <input type="text" placeholder="Age" id="age">
+        <input type="text" placeholder="Gender" id="gender">
+        <input type="text" placeholder="Marks" id="marks">
+        <input type="text" placeholder="Cohorat" id = "cohorat">
+        <button id="inputData" onclick="editData()">EDITDATA</button>
+    </form>
+</body>
+</html>
+<script>
+    const studentId = JSON.parse(localStorage.getItem("studentId")) || [];
+    const updateData = async () =>{
+        try {
+        const res = await fetch(`http://localhost:3000/students/${studentId}`);
+        const data = await res.json();
+
+        const {Name,Age,Marks,Cohorat,gender} = data;
+
+        document.querySelector("#name").value = Name;
+        document.querySelector("#age").value = Age ;
+        document.querySelector("#gender").value = gender;
+        document.querySelector("#marks").value = Marks;
+        document.querySelector("#cohorat").value = Cohorat;
+    } catch (error) {
+            console.log(error);
+    }
+        
+    }
+   
+
+    const editData = async()=>{
+        try {
+            let body={
+                Name : document.querySelector("#name").value,
+                Age : document.querySelector("#age").value,
+                gender : document.querySelector("#gender").value,
+                Marks : document.querySelector("#marks").value,
+                Cohorat : document.querySelector("#cohorat").value,
+
+            }
+            const res = await fetch(`http://localhost:3000/students/${studentId}`,{
+                method:'PUT',
+                body:JSON.stringify(body),
+                headers:{
+                 "Content-Type":"application/json"
+             }
+            });
+            location.href = "./index.html";
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    }
+    updateData();
+</script>
